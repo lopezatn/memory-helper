@@ -9,31 +9,24 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleUserName = (event) => {
-        const newValue = event.target.value;
-        if (newValue === "") {
-            setErrorMessage("Field is empty");
-        } else {
-            setErrorMessage("");
-        }
-
-        setUsername(newValue);
+        setUsername(event.target.value);
+        setErrorMessage("");
     }
 
     const handlePassword = (event) => {
-        const newValue = event.target.value;
-        if (newValue === "") {
-            setErrorMessage("Field is empty");
-        } else {
-            setErrorMessage("");
-        }
-
-        setPassword(newValue);
+        setPassword(event.target.value);
+        setErrorMessage("");
     }
 
     const handleOnClick = () => {
-        console.log("fuck you");
+        if (username === "") {
+            setErrorMessage("Username is empty");
+        } else if (password === "") {
+            setErrorMessage("Password is empty");
+        } 
     }
 
+    console.log(username);
 
     return (
     <>
@@ -64,8 +57,11 @@ const Login = () => {
             <div className='container text-center'>
                 Please Log-in to proceed
                 <div className='row'>
-                    <InputField placeholder="username" />
-                    <InputField placeholder="password" />
+                    <InputField placeholder="username" onChange={handleUserName}/>
+                    <InputField placeholder="password" onChange={handlePassword}/>
+                    <label className="errorMessage">
+                        {errorMessage}
+                    </label>
                 </div>
                 <Button type="button" value="Log-in" onClick={handleOnClick} />
             </div>

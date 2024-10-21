@@ -1,12 +1,12 @@
 import React from 'react';
 
-const InputField = ({placeholder}) => {
+const InputField = ({placeholder, onChange}) => {
     
 
 
     return (
         <label className="">
-            <input className='text-center' placeholder={placeholder}/>
+            <input className='text-center' onChange={onChange} placeholder={placeholder}/>
         </label>
     )
 }
