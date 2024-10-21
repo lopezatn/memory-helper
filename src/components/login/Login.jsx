@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import InputField from '../inputField/InputField';
 import Button from '../button/Button';
+import login from '../../clients/loginClient';
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -23,10 +24,12 @@ const Login = () => {
             setErrorMessage("Username is empty");
         } else if (password === "") {
             setErrorMessage("Password is empty");
-        } 
-    }
+        } else {
+            const result = login(username, password);
+            console.log(result);
+        }
 
-    console.log(username);
+    }
 
     return (
     <>
