@@ -6,34 +6,54 @@ import Button from '../button/Button';
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleUserName = (event) => {
         const newValue = event.target.value;
+        if (newValue === "") {
+            setErrorMessage("Field is empty");
+        } else {
+            setErrorMessage("");
+        }
+
         setUsername(newValue);
     }
 
+    const handlePassword = (event) => {
+        const newValue = event.target.value;
+        if (newValue === "") {
+            setErrorMessage("Field is empty");
+        } else {
+            setErrorMessage("");
+        }
+
+        setPassword(newValue);
+    }
+
+    const handleOnClick = () => {
+        console.log("fuck you");
+    }
 
 
     return (
-    <body>
+    <>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Memory Helper</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">Memory Helper</a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Login</a>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ms-auto">
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Login</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Reminders</a>
+                    <li className="nav-item">
+                    <a className="nav-link" href="#">Reminders</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Create Reminder</a>
+                    <li className="nav-item">
+                    <a className="nav-link" href="#">Create Reminder</a>
                     </li>
                 </ul>
                 </div>
@@ -47,15 +67,14 @@ const Login = () => {
                     <InputField placeholder="username" />
                     <InputField placeholder="password" />
                 </div>
-                <Button type="button" value="Log-in" />
-
+                <Button type="button" value="Log-in" onClick={handleOnClick} />
             </div>
         </main>
         <footer>
 
         </footer>
 
-    </body>
+    </>
     )
 }
 
