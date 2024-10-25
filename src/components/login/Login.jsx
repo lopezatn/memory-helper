@@ -19,16 +19,26 @@ const Login = () => {
         setErrorMessage("");
     }
 
-    const handleOnClick = () => {
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            submitLogin();
+        }
+    }
+
+    const submitLogin = () => {
         if (username === "") {
             setErrorMessage("Username is empty");
         } else if (password === "") {
             setErrorMessage("Password is empty");
         } else {
             const result = login(username, password);
-            console.log(result);
+            if (result) {
+                console.log(result);
+            }
+            else {
+                console.log("Result is undefined");
+            }
         }
-
     }
 
     return (
@@ -60,13 +70,13 @@ const Login = () => {
             <div className='container text-center'>
                 Please Log-in to proceed
                 <div className='row'>
-                    <InputField placeholder="username" onChange={handleUserName}/>
-                    <InputField placeholder="password" onChange={handlePassword}/>
+                    <InputField placeholder="username" onKeyDown={handleKeyDown} onChange={handleUserName}/>
+                    <InputField placeholder="password" onKeyDown={handleKeyDown} onChange={handlePassword}/>
                     <label className="errorMessage">
                         {errorMessage}
                     </label>
                 </div>
-                <Button type="button" value="Log-in" onClick={handleOnClick} />
+                <Button type="button" value="Log-in" onClick={submitLogin} />
             </div>
         </main>
         <footer>
