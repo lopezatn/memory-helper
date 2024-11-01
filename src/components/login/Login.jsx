@@ -76,7 +76,7 @@ const Login = () => {
                         {errorMessage}
                     </label>
                 </div>
-                <Button type="button" value="Log-in" onClick={submitLogin} />
+                <Button className="btn btn-outline-primary" type="button" value="Log-in" onClick={submitLogin} />
             </div>
         </main>
         <footer>
