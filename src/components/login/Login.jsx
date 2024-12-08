@@ -3,12 +3,15 @@ import './Login.css';
 import InputField from '../inputField/InputField';
 import Button from '../button/Button';
 import login from '../../clients/loginClient';
+import Reminders from '../reminders/Reminders';
 import Navigation from '../../routes/Navigation';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const redirect = useNavigate();
 
     const handleUserName = (event) => {
         setUsername(event.target.value);
@@ -34,10 +37,10 @@ const Login = () => {
         } else {
             const result = login(username, password);
             if (result) {
-                console.log(result);
+                redirect("/reminders");
             }
             else {
-                console.log("Result is undefined");
+                setErrorMessage("Username or Password is incorrect");
             }
         }
     }

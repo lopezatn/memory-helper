@@ -1,6 +1,6 @@
 const loginUser = (username, password) => {
     if (username === "admin" && password === "admin") {
-        return { username, name: "Duck" };
+        return { username: "Duck" };
     }
     if (username !== "admin") {
         throw Error("The user doesn't exist");
