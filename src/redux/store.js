@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useReducer } from "react";
+import userReducer from "./slices/userSlice";
+import reminderSlice from "./slices/reminderSlice";
 
 export default configureStore({
     reducer: {
-        user: useReducer,
-    }
+        user: userReducer,
+        reminders: reminderSlice,
+    },
 });

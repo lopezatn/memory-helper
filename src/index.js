@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import ErrorPage from './error-page';
 import Login from './components/login/Login';
 import Reminders from './components/reminders/Reminders';
+import NewReminder from './components/newReminder/NewReminder';
+import { Provider } from 'react-redux';
+import store from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +21,19 @@ const router = createBrowserRouter([
     element: <Reminders />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/new-reminder",
+    element: <NewReminder />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
