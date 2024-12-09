@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const reminderSlice = createSlice({
     name: "reminders",
-    initialState: null,
+    initialState: { reminders: ["test", "test2"] },
     reducers: {
         createReminder: (state, action) => {
             state.reminders.push(action.payload)

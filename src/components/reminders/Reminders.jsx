@@ -1,13 +1,17 @@
 import React from "react";
 import "./Reminders.css";
 import Navigation from "../../routes/Navigation";
+import { useSelector } from "react-redux";
 
 const Reminders = () => {
-  const REMINDERS = [
-    { title: "Give Tamara a kiss!", desc: "with kindness", id: 0 },
-    { title: "Have some fun", desc: "with responsability :D", id: 1 },
-    { title: "Seize your day", desc: "...or regret later", id: 2 },
-  ];
+//   const REMINDERS = [
+//     { title: "Give Tamara a kiss!", desc: "with kindness", id: 0 },
+//     { title: "Have some fun", desc: "with responsability :D", id: 1 },
+//     { title: "Seize your day", desc: "...or regret later", id: 2 },
+//   ];
+
+    const REMINDERS = useSelector((state) => state.reminders.reminders)
+    console.log("Reminders inside of the Slice: ", REMINDERS);
 
   return (
     <>
@@ -22,10 +26,10 @@ const Reminders = () => {
               aria-current="true"
             >
               <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{reminder.title}</h5>
+                <h5 className="mb-1">{reminder}</h5>
                 <small>3 days ago</small>
               </div>
-              <p className="mb-1">{reminder.desc}</p>
+              <p className="mb-1">{reminder}</p>
             </a>
           ))}
         </div>

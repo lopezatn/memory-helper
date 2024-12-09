@@ -39,7 +39,6 @@ const Login = () => {
     } else {
       const result = login(username, password);
       if (result) {
-        console.log("Dispatch action with: ", result);
         dispatch(reduxLogin(result));
         redirect("/reminders");
       } else {
