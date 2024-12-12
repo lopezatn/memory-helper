@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    reminders: [
-        { title: "Give Tamara a kiss!", desc: "with kindness", id: 0 },
-        { title: "Have some fun", desc: "with responsability :D", id: 1 },
-        { title: "Seize your day", desc: "...or regret later", id: 2 },
-    ]
+    reminders: []
 }
 
 const reminderSlice = createSlice({

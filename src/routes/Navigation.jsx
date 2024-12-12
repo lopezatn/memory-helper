@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 const Navigation = () => {
+
+
+  let redirect = useNavigate();
+
+  const handleNavigation = (path) => {
+    redirect(path);
+  }
+
   return (
     <>
       <header>
@@ -20,17 +30,17 @@ const Navigation = () => {
             </button>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href={`/`}>
+                <a className="nav-link" onClick={() => handleNavigation('/')}>
                   Login
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href={`/reminders`}>
+                <a className="nav-link" onClick={() => handleNavigation('/reminders')}>
                   Reminders
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href={`/new-reminder`}>
+                <a className="nav-link" onClick={() => handleNavigation('/new-reminder')}>
                   Create Reminder
                 </a>
               </li>

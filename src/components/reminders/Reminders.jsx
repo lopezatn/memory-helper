@@ -14,8 +14,9 @@ const Reminders = () => {
       <main className="container">
         <h2>Your Reminders</h2>
         <div className="list-group">
-          {reminders.map((reminder) => (
+          {reminders.map((reminder, index) => (
             <a
+              key={index}
               href="#"
               className="list-group-item list-group-item-action active"
               aria-current="true"
@@ -24,7 +25,7 @@ const Reminders = () => {
                 <h5 className="mb-1">{reminder.title}</h5>
                 <small>3 days ago</small>
               </div>
-              <p className="mb-1">{reminder.desc}</p>
+              <p className="mb-1">{reminder.description}</p>
             </a>
           ))}
         </div>

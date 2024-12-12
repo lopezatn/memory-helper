@@ -6,11 +6,18 @@ import { useDispatch } from "react-redux";
 import { createReminder } from "../../redux/slices/reminderSlice";
 
 const NewReminder = () => {
-  const [reminder, newReminder] = useState("");
+  const [reminder, newReminder] = useState({ title: "", description: "" });
   const dispatch = useDispatch();
 
   const handleNewReminder = (event) => {
-    newReminder(event.target.value);
+    const { name, value } = event.target;
+    newReminder((prevReminder) => ({
+      ...prevReminder,
+      [name]: value,
+    }));
+    console.log("name: ", name);
+    console.log("value: ", value);
+    console.log(reminder);
   };
 
   const handleKeyDown = (event) => {
@@ -32,7 +39,16 @@ const NewReminder = () => {
       <Navigation />
       <main className="container">
         <h2>New Reminder:</h2>
-        <InputField onChange={handleNewReminder} onKeyDown={handleKeyDown} />
+        <InputField
+          name="title"
+          onChange={handleNewReminder}
+          onKeyDown={handleKeyDown}
+        />
+        <InputField
+          name="description"
+          onChange={handleNewReminder}
+          onKeyDown={handleKeyDown}
+        />
         <Button
           className="btn btn-outline-primary"
           type="button"
