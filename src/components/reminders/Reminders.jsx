@@ -4,7 +4,6 @@ import Navigation from "../../routes/Navigation";
 import { useSelector } from "react-redux";
 
 const Reminders = () => {
-
     const { reminders } = useSelector((state) => state.reminders)
     console.log("Reminders inside of the Slice: ", reminders);
 
@@ -23,7 +22,7 @@ const Reminders = () => {
             >
               <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{reminder.title}</h5>
-                <small>3 days ago</small>
+                <small>{reminder.creationDate}</small>
               </div>
               <p className="mb-1">{reminder.description}</p>
             </a>
