@@ -25,7 +25,7 @@ const NewReminder = () => {
 
   const resetValue = () => {
     newReminder({ title: "", description: "" });
-  }
+  };
 
   const submitReminder = () => {
     if (reminder === "") {
