@@ -15,9 +15,6 @@ const NewReminder = () => {
       ...prevReminder,
       [name]: value,
     }));
-    console.log("name: ", name);
-    console.log("value: ", value);
-    console.log(reminder);
   };
 
   const handleKeyDown = (event) => {
@@ -26,11 +23,17 @@ const NewReminder = () => {
     }
   };
 
+  const resetValue = () => {
+    newReminder({ title: "", description: "" });
+  }
+
   const submitReminder = () => {
     if (reminder === "") {
       alert("Field can't be empty.");
     } else {
       dispatch(createReminder(reminder));
+      resetValue();
+      alert("Reminder created");
     }
   };
 
@@ -41,11 +44,13 @@ const NewReminder = () => {
         <h2>New Reminder:</h2>
         <InputField
           name="title"
+          value={reminder.title}
           onChange={handleNewReminder}
           onKeyDown={handleKeyDown}
         />
         <InputField
           name="description"
+          value={reminder.description}
           onChange={handleNewReminder}
           onKeyDown={handleKeyDown}
         />
