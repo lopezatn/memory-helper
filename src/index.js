@@ -9,6 +9,8 @@ import Reminders from './components/reminders/Reminders';
 import NewReminder from './components/newReminder/NewReminder';
 import { Provider } from 'react-redux';
 import store from "./redux/store";
+import ProtectedRoute from './routes/ProtectedRoute';
+
 
 const router = createBrowserRouter([
   {
@@ -18,12 +20,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/reminders",
-    element: <Reminders />,
+    element: <ProtectedRoute render={<Reminders />} />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/new-reminder",
-    element: <NewReminder />,
+    element: <ProtectedRoute render={<NewReminder />} />,
     errorElement: <ErrorPage />,
   },
 ]);

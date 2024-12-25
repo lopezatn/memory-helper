@@ -7,6 +7,7 @@ import { createReminder } from "../../redux/slices/reminderSlice";
 
 const NewReminder = () => {
   const [reminder, newReminder] = useState({ title: "", description: "" });
+  const [reminderAdded, setReminderAdded] = useState(false);
   const dispatch = useDispatch();
 
   const handleNewReminder = (event) => {
@@ -32,8 +33,8 @@ const NewReminder = () => {
       alert("Field can't be empty.");
     } else {
       dispatch(createReminder(reminder));
+      setReminderAdded(true);
       resetValue();
-      alert("Reminder created");
     }
   };
 
@@ -59,7 +60,8 @@ const NewReminder = () => {
           type="button"
           value="Add reminder"
           onClick={submitReminder}
-        />
+        /><br/>
+        {reminderAdded ? <span>Reminder added!</span> : '' }
       </main>
       <footer></footer>
     </>

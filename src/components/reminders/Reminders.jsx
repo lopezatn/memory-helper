@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Reminders.css";
 import Navigation from "../../routes/Navigation";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  deleteReminder as deleteReminderAction,
+  editReminder as editReminderAction,
+  markReminderAsFinished as markReminderAsFinishedAction,
+} from "../../redux/slices/reminderSlice";
+import ReminderItem from "./ReminderItem";
+import EditReminder from "../editReminder/EditReminder";
 
 const Reminders = () => {
-    const { reminders } = useSelector((state) => state.reminders)
-    console.log("Reminders inside of the Slice: ", reminders);
+  const [isEditing, setIsEditing] = useState();
+  const { reminders } = useSelector((state) => state.reminders);
+  const dispatch = useDispatch();
+
+  const markReminderAsFinished = (id) => {
+    dispatch(markReminderAsFinishedAction(id));
+  };
+
+  const deleteReminder = (id) => {
+    dispatch(deleteReminderAction(id));
+  };
 
   return (
     <>
@@ -13,19 +30,25 @@ const Reminders = () => {
       <main className="container">
         <h2>Your Reminders</h2>
         <div className="list-group">
-          {reminders.map((reminder, index) => (
-            <a
-              key={index}
-              href="#"
-              className="list-group-item list-group-item-action active"
-              aria-current="true"
-            >
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{reminder.title}</h5>
-                <small>{reminder.creationDate}</small>
-              </div>
-              <p className="mb-1">{reminder.description}</p>
-            </a>
+          {reminders.map((reminder) => (
+            <div className="list-item" key={reminder.id}>
+              {isEditing === reminder.id ? (
+                <EditReminder reminder={reminder} isEditing={setIsEditing} />
+              ) : (
+                <>
+                  <ReminderItem reminder={reminder} />
+                  <button onClick={() => markReminderAsFinished(reminder.id)}>
+                    Finished
+                  </button>
+                  <button onClick={() => setIsEditing(reminder.id)}>
+                    Edit
+                  </button>
+                  <button onClick={() => deleteReminder(reminder.id)}>
+                    Delete
+                  </button>
+                </>
+              )}
+            </div>
           ))}
         </div>
       </main>
