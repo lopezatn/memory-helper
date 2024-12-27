@@ -45,7 +45,6 @@ const reminderSlice = createSlice({
       );
       if (reminder) {
         reminder.finished = !reminder.finished;
-        console.log(reminder.finished);
       }
     },
     editReminder: (state, action) => {
@@ -54,6 +53,7 @@ const reminderSlice = createSlice({
       if (reminder) {
         reminder.title = title;
         reminder.description = description;
+        reminder.creationDate = date();
       }
     },
     deleteReminder: (state, action) => {

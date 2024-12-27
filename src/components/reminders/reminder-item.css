@@ -1,0 +1,5 @@
+.title-date-desc-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}

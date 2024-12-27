@@ -1,3 +1,5 @@
+import "./reminder-item.css";
+
 const ReminderItem = ({ reminder }) => {
   return (
     <div
@@ -7,11 +9,11 @@ const ReminderItem = ({ reminder }) => {
           : "list-group-item list-group-item-action active"
       }
     >
-      <div className="d-flex w-100 justify-content-between">
-        <h5 className="mb-1">{reminder.title}</h5>
+      <div className="title-date-desc-container">
         <small>{reminder.creationDate}</small>
+        <h5 className="">{reminder.title}</h5>
       </div>
-      <p className="mb-1">{reminder.description}</p>
+      <p className="title-date-desc-container">{reminder.description}</p>
     </div>
   );
 };
