@@ -34,12 +34,14 @@ const EditReminder = ({ reminder, isEditing }) => {
         <h5>Edit Reminder:</h5>
         <InputField
           name="title"
+          maxLength={75}
           value={editedReminder.title}
           onChange={handleEditReminder}
           onKeyDown={handleKeyDown}
         />
         <InputField
           name="description"
+          maxLength={75}
           value={editedReminder.description}
           onChange={handleEditReminder}
           onKeyDown={handleKeyDown}

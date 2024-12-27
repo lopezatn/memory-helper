@@ -49,6 +49,7 @@ const NewReminder = () => {
             <InputField
               placeholder="title"
               name="title"
+              maxLength={75}
               value={reminder.title}
               onChange={handleNewReminder}
               onKeyDown={handleKeyDown}
@@ -58,6 +59,7 @@ const NewReminder = () => {
             <InputField
               placeholder="description"
               name="description"
+              maxLength={75}
               value={reminder.description}
               onChange={handleNewReminder}
               onKeyDown={handleKeyDown}
