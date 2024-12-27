@@ -35,6 +35,7 @@ const reminderSlice = createSlice({
         ...action.payload,
         creationDate: date(),
         id: generateId(),
+        finished: false,
       });
     },
     markReminderAsFinished: (state, action) => {
@@ -43,7 +44,8 @@ const reminderSlice = createSlice({
         (reminder) => reminder.id === reminderId
       );
       if (reminder) {
-        reminder.finished = true;
+        reminder.finished = !reminder.finished;
+        console.log(reminder.finished);
       }
     },
     editReminder: (state, action) => {

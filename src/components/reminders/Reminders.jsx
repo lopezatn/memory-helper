@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import "./Reminders.css";
 import Navigation from "../../routes/Navigation";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
   deleteReminder as deleteReminderAction,
-  editReminder as editReminderAction,
   markReminderAsFinished as markReminderAsFinishedAction,
 } from "../../redux/slices/reminderSlice";
 import ReminderItem from "./ReminderItem";
@@ -38,7 +36,7 @@ const Reminders = () => {
                 <>
                   <ReminderItem reminder={reminder} />
                   <button onClick={() => markReminderAsFinished(reminder.id)}>
-                    Finished
+                    {reminder.finished ? "Unfinish" : "Finish"}
                   </button>
                   <button onClick={() => setIsEditing(reminder.id)}>
                     Edit

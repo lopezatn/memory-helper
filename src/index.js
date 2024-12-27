@@ -4,28 +4,20 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from './error-page';
-import Login from './components/login/Login';
 import Reminders from './components/reminders/Reminders';
 import NewReminder from './components/newReminder/NewReminder';
 import { Provider } from 'react-redux';
 import store from "./redux/store";
-import ProtectedRoute from './routes/ProtectedRoute';
-
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-  {
     path: "/reminders",
-    element: <ProtectedRoute render={<Reminders />} />,
+    element: <Reminders />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/new-reminder",
-    element: <ProtectedRoute render={<NewReminder />} />,
+    element: <NewReminder />,
     errorElement: <ErrorPage />,
   },
 ]);

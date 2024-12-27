@@ -1,8 +1,6 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
-  const loggedIn = useSelector((state) => state.user !== null);
   let redirect = useNavigate();
 
   const handleNavigation = (path) => {
@@ -14,7 +12,7 @@ const Navigation = () => {
       <header>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" onClick={() => handleNavigation("/")}>
               Memory Helper
             </a>
             <button
@@ -28,34 +26,24 @@ const Navigation = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            {loggedIn ? (
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    onClick={() => handleNavigation("/reminders")}
-                  >
-                    Reminders
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    onClick={() => handleNavigation("/new-reminder")}
-                  >
-                    Create Reminder
-                  </a>
-                </li>
-              </ul>
-            ) : (
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item">
-                  <a className="nav-link" onClick={() => handleNavigation("/")}>
-                    Login
-                  </a>
-                </li>
-              </ul>
-            )}
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  onClick={() => handleNavigation("/reminders")}
+                >
+                  Reminders
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  onClick={() => handleNavigation("/new-reminder")}
+                >
+                  Create Reminder
+                </a>
+              </li>
+            </ul>
           </div>
         </nav>
       </header>
