@@ -3,3 +3,16 @@
     flex-direction: column;
     width: fit-content;
 }
+
+.padding-l {
+    padding-left: 25px;
+}
+
+.finished-icon {
+    background-image: url(/src/assets/icons/check.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+}
