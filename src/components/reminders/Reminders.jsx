@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import "./reminders.css";
+import "./Reminders.css";
 import Navigation from "../../routes/Navigation";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deleteReminder as deleteReminderAction,
   markReminderAsFinished as markReminderAsFinishedAction,
+  updateRemindersOrder,
 } from "../../redux/slices/reminderSlice";
 import ReminderItem from "./ReminderItem";
 import EditReminder from "../editReminder/EditReminder";
 
 const Reminders = () => {
   const [isEditing, setIsEditing] = useState(null);
+  const [draggedItemIndex, setDraggedItemIndex] = useState(null);
   const { reminders } = useSelector((state) => state.reminders);
   const dispatch = useDispatch();
 
@@ -22,6 +24,19 @@ const Reminders = () => {
     dispatch(deleteReminderAction(id));
   };
 
+  const handleDragStart = (index) => {
+    setDraggedItemIndex(index);
+  }
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (index) => {
+    dispatch(updateRemindersOrder({draggedItemIndex, index}));
+    setDraggedItemIndex(null);
+  }
+  
   return (
     <>
       <Navigation />
@@ -29,8 +44,8 @@ const Reminders = () => {
         <main>
           <h2>Reminders</h2>
           <div className="reminder-container">
-            {reminders.map((reminder) => (
-              <div className="reminder-box" key={reminder.id}>
+            {reminders.map((reminder, index) => (
+              <div className="reminder-box" draggable onDragStart={() => {handleDragStart(index)}} onDragOver={handleDragOver} onDrop={() => handleDrop(index)} key={reminder.id}>
                 {isEditing === reminder.id ? (
                   <EditReminder reminder={reminder} isEditing={setIsEditing} />
                 ) : (

@@ -1,0 +1,42 @@
+footer {
+    margin-top: auto;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.home {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #adb5bd;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+}
+
+.new-reminder-box {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(206, 203, 203);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 775px;
+}
+
+.reminder-added {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}

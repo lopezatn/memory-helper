@@ -1,4 +1,4 @@
-import "./reminder-item.css";
+import "./ReminderItem.css";
 
 const ReminderItem = ({ reminder }) => {
   return (
@@ -10,10 +10,10 @@ const ReminderItem = ({ reminder }) => {
             : "title-date-desc-container"
         }
       >
-        <small>{reminder.creationDate}</small>
-        <h5 className="">{reminder.title}</h5>
+        <small className="reminder-date">{reminder.finished ? '' : reminder.creationDate}</small>
+        <h5>{reminder.title}</h5>
       </div>
-      <p className="title-date-desc-container">{reminder.description}</p>
+      <p className={reminder.finished ? "description" : ""}>{reminder.description}</p>
     </>
   );
 };

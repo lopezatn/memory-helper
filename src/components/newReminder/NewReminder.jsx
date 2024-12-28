@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./new-reminder.css";
+import "./NewReminder.css";
 import Navigation from "../../routes/Navigation";
 import InputField from "../inputField/InputField";
 import Button from "../button/Button";
@@ -9,6 +9,7 @@ import { createReminder } from "../../redux/slices/reminderSlice";
 const NewReminder = () => {
   const [reminder, newReminder] = useState({ title: "", description: "" });
   const [reminderAdded, setReminderAdded] = useState(false);
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   const handleNewReminder = (event) => {
@@ -30,10 +31,11 @@ const NewReminder = () => {
   };
 
   const submitReminder = () => {
-    if (reminder === "") {
-      alert("Field can't be empty.");
+    if (reminder.title === "" || reminder.description === "") {
+      setError(true);
     } else {
       dispatch(createReminder(reminder));
+      setError(false);
       setReminderAdded(true);
       resetValue();
     }
@@ -45,7 +47,7 @@ const NewReminder = () => {
       <div className="home">
         <main>
           <h2>New Reminder</h2>
-          <div className="reminder-box">
+          <div className="new-reminder-box">
             <InputField
               placeholder="title"
               name="title"
@@ -55,7 +57,7 @@ const NewReminder = () => {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="reminder-box">
+          <div className="new-reminder-box">
             <InputField
               placeholder="description"
               name="description"
@@ -73,7 +75,8 @@ const NewReminder = () => {
               onClick={submitReminder}
             />
           </div>
-          {reminderAdded ? <span>Reminder added!</span> : ""}
+          {error ? <span className="reminder-added">One of the fields is empty!</span> : ""}
+          {reminderAdded ? <span className="reminder-added">Reminder added!</span> : ""}
         </main>
         <footer>
           <p>

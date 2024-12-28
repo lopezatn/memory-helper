@@ -1,14 +1,25 @@
-import React from 'react';
+import React from "react";
+import "./InputField.css";
 
-const InputField = ({name, value, onChange, onKeyDown, placeholder, maxLength}) => {
-    
-
-
-    return (
-        <label className="">
-            <input name={name} value={value} className='text-center' onChange={onChange} onKeyDown={onKeyDown} placeholder={placeholder} maxLength={maxLength}/>
-        </label>
-    )
-}
+const InputField = ({
+  name,
+  value,
+  onChange,
+  onKeyDown,
+  placeholder,
+  maxLength,
+}) => {
+  return (
+    <input
+      name={name}
+      value={value}
+      className="input-field"
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+      maxLength={maxLength}
+    />
+  );
+};
 
 export default InputField;

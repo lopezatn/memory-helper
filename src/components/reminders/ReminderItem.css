@@ -8,6 +8,10 @@
     padding-left: 25px;
 }
 
+.description {
+    margin-top: 5%;
+}
+
 .finished-icon {
     background-image: url(/src/assets/icons/check.png);
     background-size: contain;

@@ -13,7 +13,7 @@ const initialState = {
       title: "Another example title",
       description: "Another description",
       finished: false,
-    }
+    },
   ],
   selectedReminder: null,
 };
@@ -57,17 +57,21 @@ const reminderSlice = createSlice({
       }
     },
     deleteReminder: (state, action) => {
-      console.log("deleteReminder called");
       const idToDelete = action.payload;
-      console.log("idToDelete", idToDelete, typeof idToDelete);
       const remindersArr = state.reminders.filter(
         (reminder) => reminder.id !== idToDelete
       );
-      console.log("remindersArr", remindersArr);
       return {
         ...state,
         reminders: remindersArr,
       };
+    },
+    updateRemindersOrder: (state, action) => {
+      const {draggedItemIndex, index} = action.payload;
+      const draggedItem = state.reminders.find((reminder, index) => index === draggedItemIndex);
+      const filteredReminders = state.reminders.filter((reminder, index) => index !== draggedItemIndex);
+      filteredReminders.splice(index, 0, draggedItem);
+      state.reminders = filteredReminders;
     },
   },
 });
@@ -77,6 +81,7 @@ export const {
   markReminderAsFinished,
   editReminder,
   deleteReminder,
+  updateRemindersOrder,
 } = reminderSlice.actions;
 
 export default reminderSlice.reducer;
