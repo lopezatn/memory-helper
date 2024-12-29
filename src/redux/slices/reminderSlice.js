@@ -1,20 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  reminders: [
-    {
-      id: 1,
-      title: "Example title",
-      description: "Example description",
-      finished: false,
-    },
-    {
-      id: 2,
-      title: "Another example title",
-      description: "Another description",
-      finished: false,
-    },
-  ],
+  reminders: [],
   selectedReminder: null,
 };
 const date = () => {
@@ -67,9 +54,13 @@ const reminderSlice = createSlice({
       };
     },
     updateRemindersOrder: (state, action) => {
-      const {draggedItemIndex, index} = action.payload;
-      const draggedItem = state.reminders.find((reminder, index) => index === draggedItemIndex);
-      const filteredReminders = state.reminders.filter((reminder, index) => index !== draggedItemIndex);
+      const { draggedItemIndex, index } = action.payload;
+      const draggedItem = state.reminders.find(
+        (reminder, index) => index === draggedItemIndex
+      );
+      const filteredReminders = state.reminders.filter(
+        (reminder, index) => index !== draggedItemIndex
+      );
       filteredReminders.splice(index, 0, draggedItem);
       state.reminders = filteredReminders;
     },

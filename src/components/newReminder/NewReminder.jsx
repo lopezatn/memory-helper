@@ -33,6 +33,7 @@ const NewReminder = () => {
   const submitReminder = () => {
     if (reminder.title === "" || reminder.description === "") {
       setError(true);
+      setReminderAdded(false);
     } else {
       dispatch(createReminder(reminder));
       setError(false);
@@ -75,8 +76,16 @@ const NewReminder = () => {
               onClick={submitReminder}
             />
           </div>
-          {error ? <span className="reminder-added">One of the fields is empty!</span> : ""}
-          {reminderAdded ? <span className="reminder-added">Reminder added!</span> : ""}
+          {error ? (
+            <span className="reminder-added">One of the fields is empty!</span>
+          ) : (
+            ""
+          )}
+          {reminderAdded ? (
+            <span className="reminder-added">Reminder added!</span>
+          ) : (
+            ""
+          )}
         </main>
         <footer>
           <p>

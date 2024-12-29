@@ -27,7 +27,6 @@ const EditReminder = ({ reminder, isEditing }) => {
     isEditing(false);
   };
 
-
   return (
     <>
       <main className="container">

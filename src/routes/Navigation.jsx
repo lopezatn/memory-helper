@@ -1,4 +1,4 @@
-import "./Navigation.css"
+import "./Navigation.css";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {

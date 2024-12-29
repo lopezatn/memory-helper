@@ -26,17 +26,17 @@ const Reminders = () => {
 
   const handleDragStart = (index) => {
     setDraggedItemIndex(index);
-  }
+  };
 
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
   const handleDrop = (index) => {
-    dispatch(updateRemindersOrder({draggedItemIndex, index}));
+    dispatch(updateRemindersOrder({ draggedItemIndex, index }));
     setDraggedItemIndex(null);
-  }
-  
+  };
+
   return (
     <>
       <Navigation />
@@ -45,19 +45,37 @@ const Reminders = () => {
           <h2>Reminders</h2>
           <div className="reminder-container">
             {reminders.map((reminder, index) => (
-              <div className="reminder-box" draggable onDragStart={() => {handleDragStart(index)}} onDragOver={handleDragOver} onDrop={() => handleDrop(index)} key={reminder.id}>
+              <div
+                className="reminder-box"
+                draggable
+                onDragStart={() => {
+                  handleDragStart(index);
+                }}
+                onDragOver={handleDragOver}
+                onDrop={() => handleDrop(index)}
+                key={reminder.id}
+              >
                 {isEditing === reminder.id ? (
                   <EditReminder reminder={reminder} isEditing={setIsEditing} />
                 ) : (
                   <>
                     <ReminderItem reminder={reminder} />
-                    <button className="btn btn-outline-light" onClick={() => markReminderAsFinished(reminder.id)}>
+                    <button
+                      className="btn btn-outline-light"
+                      onClick={() => markReminderAsFinished(reminder.id)}
+                    >
                       {reminder.finished ? "Unfinish" : "Finish"}
                     </button>
-                    <button className="btn btn-outline-light" onClick={() => setIsEditing(reminder.id)}>
+                    <button
+                      className="btn btn-outline-light"
+                      onClick={() => setIsEditing(reminder.id)}
+                    >
                       Edit
                     </button>
-                    <button className="btn btn-outline-light" onClick={() => deleteReminder(reminder.id)}>
+                    <button
+                      className="btn btn-outline-light"
+                      onClick={() => deleteReminder(reminder.id)}
+                    >
                       Delete
                     </button>
                   </>

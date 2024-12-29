@@ -10,10 +10,14 @@ const ReminderItem = ({ reminder }) => {
             : "title-date-desc-container"
         }
       >
-        <small className="reminder-date">{reminder.finished ? '' : reminder.creationDate}</small>
+        <small className="reminder-date">
+          {reminder.finished ? "" : reminder.creationDate}
+        </small>
         <h5>{reminder.title}</h5>
       </div>
-      <p className={reminder.finished ? "description" : ""}>{reminder.description}</p>
+      <p className={reminder.finished ? "description" : ""}>
+        {reminder.description}
+      </p>
     </>
   );
 };

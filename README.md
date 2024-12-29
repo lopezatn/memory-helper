@@ -42,7 +42,6 @@ The project follows best practices in front-end development and ReactJS, ensurin
 - **Navigation**:
   Handles the navigation of the website using **React Router**.
 
-
 ---
 
 ## Design Choices
